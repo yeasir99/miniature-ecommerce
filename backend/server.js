@@ -5,6 +5,7 @@ import morgan from 'morgan';
 
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoute.js';
+import orderRoutes from './routes/orderRoutes.js';
 
 dotenv.config();
 
@@ -20,6 +21,7 @@ app.use(express.json());
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
+app.use('/api/orders', orderRoutes);
 
 const PORT = process.env.PORT || 8000;
 
