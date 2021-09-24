@@ -4,6 +4,7 @@ import connectDB from './config/db.js';
 import morgan from 'morgan';
 
 import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoute.js';
 
 dotenv.config();
 
@@ -18,6 +19,7 @@ if (process.env.NODE_ENV === 'development') {
 app.use(express.json());
 
 app.use('/api/products', productRoutes);
+app.use('/api/users', userRoutes);
 
 const PORT = process.env.PORT || 8000;
 
