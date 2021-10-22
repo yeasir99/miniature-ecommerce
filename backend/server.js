@@ -4,6 +4,8 @@ import dotenv from 'dotenv';
 import connectDB from './config/db.js';
 import morgan from 'morgan';
 import { notFound, errorHandler } from './middleware/errorMiddleware.js';
+import cookieParser from 'cookie-parser';
+import fileUpload from 'express-fileupload';
 
 import productRoutes from './routes/productRoutes.js';
 import userRoutes from './routes/userRoute.js';
@@ -21,6 +23,13 @@ if (process.env.NODE_ENV === 'development') {
 }
 
 app.use(express.json());
+app.use(
+  express.urlencoded({
+    extended: false,
+  })
+);
+app.use(fileUpload());
+app.use(cookieParser());
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', userRoutes);
